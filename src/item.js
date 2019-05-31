@@ -3,8 +3,6 @@ import StarRatingComponent from 'react-star-rating-component';
 import { Card } from 'react-bootstrap';
 
 class Item extends Component {
-
-
     render() {
 
         const { item } = this.props;

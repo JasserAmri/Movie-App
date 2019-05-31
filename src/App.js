@@ -14,12 +14,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      filtered: database,
+      filtered:database,
       keyword: '',
-      rating: null,
+      rating: null ,
+      loading : true   
     }
   }
-
+  componentDidMount=()=>{
+    setTimeout(() =>{
+      this.setState({loading: false})
+    }, 3000);
+  }
   handlechange = (event) => {
     this.setState({ keyword: event.target.value })
     this.setState({ filtered: database.filter((el, i) => el.title.toLocaleLowerCase().indexOf(event.target.value) > -1 && el.rate >= this.state.rating) })
@@ -34,6 +39,7 @@ class App extends Component {
     })
     database.push(newMovie)  
   }
+  
 
   render() {
     const { rating } = this.state;
@@ -49,8 +55,8 @@ class App extends Component {
           onStarClick={this.onStarClick}
         />
       </div>
-      <NewMovie />
-      <Liste content={this.state.filtered} onAddMovie={(newMovie) => this.addNewMovie(newMovie)} />
+      <NewMovie/>
+      <Liste content={this.state.filtered} loading={this.state.loading} onAddMovie={(newMovie) => this.addNewMovie(newMovie)} />
 
     </div>
 

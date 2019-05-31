@@ -1,5 +1,6 @@
 import React from 'react';
-import Item from './item'
+import Item from './item';
+import load from './Loading';
 
 const Liste = ({content = [], onAddMovie = () => {}}) => {
     return (<div className="movie-list">
@@ -18,5 +19,5 @@ const Liste = ({content = [], onAddMovie = () => {}}) => {
         </div>
     </div>)
 }
-export default Liste;
+export default load(Liste);
 
